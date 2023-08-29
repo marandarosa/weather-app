@@ -60,3 +60,8 @@ p {
   padding: 0px 15px;
   margin: 0px 5px;
 }
+footer {
+  text-align: center;
+  font-size: 14px;
+  margin-top: 30px;
+}
