@@ -1,13 +1,11 @@
 body {
   background-image: url("https://s3.amazonaws.com/shecodesio-production/uploads/files/000/095/944/original/5200111-cloud-cloudscape-sky-puffy-white-pink-pastel-horizon-faded-nature-wallpaper-light-from-above-aerial-view-aerial-love-background-love-wallpaper-love-oregon-summer-png-images.jpg?1693952064");
   background-size: cover;
-  background-repeat: no-repeat;
 }
 .card {
   box-shadow: 0px 0px 6px 1px rgba(0, 0, 0, 0.3) inset;
 }
 .search-city {
-  width: 95%;
   padding: 10px 10px;
 }
 .search-button,
@@ -20,24 +18,24 @@ body {
 }
 div.card {
   margin: 0 auto;
-  max-width: fit-content;
+  max-width: 450px;
   position: relative;
-  top: 20px;
+  top: 30px;
   background-color: #ffded5;
 }
 .card-body {
-  padding: 10px 10px;
+  padding: 15px 15px;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-}
-.today-temp {
-  padding: 0px 0px;
 }
 h1,
 h2,
 h4 {
-  text-align: center;
-  line-height: 1.25em;
+  line-height: 1.2em;
   text-transform: capitalize;
+  margin: 0;
+}
+h2 {
+  display: inline;
 }
 #current-temp {
   font-size: 48px;
@@ -47,10 +45,13 @@ h4 {
 ul {
   list-style-type: none;
   padding: 0px;
-  text-align: center;
+  position: relative;
+  top: 20px;
 }
 .main-image {
-  font-size: 100px;
+  font-size: 65px;
+  display: inline;
+  margin: 0 auto;
 }
 #weather-description {
   text-transform: capitalize;
@@ -59,18 +60,28 @@ p {
   font-style: italic;
   font-size: 16px;
   line-height: 1em;
+  text-align: left;
+  margin: 0;
 }
 .five-day {
-  font-size: 20px;
+  font-size: 16px;
+  padding: 0px 25px;
 }
 .five-day-individual {
   border: 1px solid gray;
-  border-radius: 10px;
-  padding: 0px 15px;
-  margin: 0px 5px;
+  border-radius: 15px;
+  margin: 15px 5px;
 }
 footer {
-  text-align: center;
   font-size: 14px;
-  margin-top: 30px;
+  position: absolute;
+  top: 95%;
+  width: 100%;
+  text-align: center;
+}
+a {
+  color: white;
+}
+a:hover {
+  color: #ffded5;
 }

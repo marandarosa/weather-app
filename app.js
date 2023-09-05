@@ -1,6 +1,6 @@
 function defaultTemperature(response) {
   let tempElement = document.querySelector("#current-temp");
-  tempElement.innerHTML = `${Math.round(response.data.main.temp)}°F`;
+  tempElement.innerHTML = `${Math.round(response.data.main.temp)}`;
   let weather = document.querySelector(`#weather-description`);
   weather.innerHTML = `${response.data.weather[0].description}`;
   let humidity = document.querySelector(`#humidity`);
@@ -17,7 +17,7 @@ function showTemperature(response) {
   let city = document.querySelector("h1");
   city.innerHTML = response.data.name;
   let tempElement = document.querySelector("#current-temp");
-  tempElement.innerHTML = `${Math.round(response.data.main.temp)}°F`;
+  tempElement.innerHTML = `${Math.round(response.data.main.temp)}`;
   let weather = document.querySelector(`#weather-description`);
   weather.innerHTML = `${response.data.weather[0].description}`;
   let humidity = document.querySelector(`#humidity`);
