@@ -16,67 +16,68 @@
   </head>
 
   <body>
-    <div class="card">
-      <div class="row search-city">
-        <div class="col-5">
-          <form>
-            <input
-              type="text"
-              id="city"
-              class="form-control"
-              placeholder="Enter city"
-            />
-          </form>
-        </div>
-        <div class="col-2">
-          <form>
-            <input
-              type="submit"
-              class="search-button"
-              id="city-search"
-              value="Search"
-            />
-          </form>
-        </div>
-        <div class="col-5">
-          <form>
-            <button class="current-location">Current Location</button>
-          </form>
-        </div>
-      </div>
-
-      <div class="card-body">
-        <div class="row today-temp">
-          <div class="col-8">
-            <h1 id="default-city">Hartford</h1>
-            <h2 id="current-temp">74°F</h2>
-            <h4 id="current-day">Monday</h4>
-            <h4 id="current-time">7:45pm</h4>
+    <div class="container">
+      <div class="card">
+        <div class="row search-city">
+          <div class="col-5">
+            <form>
+              <input
+                type="text"
+                id="city"
+                class="form-control"
+                placeholder="Enter city"
+              />
+            </form>
           </div>
-          <div class="col-3 main-image">☁️</div>
+          <div class="col-2">
+            <form>
+              <input
+                type="submit"
+                class="search-button"
+                id="city-search"
+                value="Search"
+              />
+            </form>
+          </div>
+          <div class="col-5">
+            <form>
+              <button class="current-location">Current Location</button>
+            </form>
+          </div>
         </div>
 
-        <ul>
-          <li id="weather-description">Sunny</li>
-          <li>Humidity: <span id="humidity">54</span>%</li>
-          <li>Wind: <span id="wind-speed">8</span>mph</li>
-        </ul>
+        <div class="card-body">
+          <div class="row today-temp">
+            <div class="col-8">
+              <h1 id="default-city">Hartford</h1>
+              <h2 id="current-temp">74°F</h2>
+              <h4 id="current-day">Monday</h4>
+              <h4 id="current-time">7:45pm</h4>
+            </div>
+            <div class="col-3 main-image">☁️</div>
+          </div>
 
-        <hr />
-        <p>Next 5 days:</p>
+          <ul>
+            <li id="weather-description">Sunny</li>
+            <li>Humidity: <span id="humidity">54</span>%</li>
+            <li>Wind: <span id="wind-speed">8</span>mph</li>
+          </ul>
 
-        <div class="container text-center five-day">
-          <div class="row">
-            <div class="col five-day-individual">Tue <br />🌥️ <br />79°F</div>
-            <div class="col five-day-individual">Wed <br />🌥️ <br />79°F</div>
-            <div class="col five-day-individual">Thu <br />⛅ <br />81°F</div>
-            <div class="col five-day-individual">Fri <br />🌧️ <br />77°F</div>
-            <div class="col five-day-individual">Sat <br />⛅ <br />81°F</div>
+          <hr />
+          <p>Next 5 days:</p>
+
+          <div class="container text-center five-day">
+            <div class="row">
+              <div class="col five-day-individual">Tue <br />🌥️ <br />79°F</div>
+              <div class="col five-day-individual">Wed <br />🌥️ <br />79°F</div>
+              <div class="col five-day-individual">Thu <br />⛅ <br />81°F</div>
+              <div class="col five-day-individual">Fri <br />🌧️ <br />77°F</div>
+              <div class="col five-day-individual">Sat <br />⛅ <br />81°F</div>
+            </div>
           </div>
         </div>
       </div>
     </div>
-
     <br />
     <footer>
       <a href="https://github.com/marandarosa/weather-app" target="_blank"
