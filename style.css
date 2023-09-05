@@ -1,3 +1,11 @@
+body {
+  background-image: url("https://s3.amazonaws.com/shecodesio-production/uploads/files/000/095/944/original/5200111-cloud-cloudscape-sky-puffy-white-pink-pastel-horizon-faded-nature-wallpaper-light-from-above-aerial-view-aerial-love-background-love-wallpaper-love-oregon-summer-png-images.jpg?1693952064");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.card {
+  box-shadow: 0px 0px 6px 1px rgba(0, 0, 0, 0.3) inset;
+}
 .search-city {
   width: 95%;
   padding: 10px 10px;
@@ -15,6 +23,7 @@ div.card {
   max-width: fit-content;
   position: relative;
   top: 20px;
+  background-color: #ffded5;
 }
 .card-body {
   padding: 10px 10px;
