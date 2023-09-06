@@ -1,62 +1,13 @@
-function defaultTemperature(response) {
-  let tempElement = document.querySelector("#current-temp");
-  tempElement.innerHTML = `${Math.round(response.data.main.temp)}`;
-  let weather = document.querySelector(`#weather-description`);
-  weather.innerHTML = `${response.data.weather[0].description}`;
-  let humidity = document.querySelector(`#humidity`);
-  humidity.innerHTML = `${response.data.main.humidity}`;
-  let windSpeed = document.querySelector(`#wind-speed`);
-  windSpeed.innerHTML = `${Math.round(response.data.wind.speed)}`;
-}
-function defaultLocation() {
-  let apiKey = "c589a18f7766266be7befa0ab3876d77";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=Hartford&appid=${apiKey}&units=imperial`;
-  axios.get(`${apiUrl}`).then(defaultTemperature);
-}
-function showTemperature(response) {
-  let city = document.querySelector("h1");
-  city.innerHTML = response.data.name;
-  let tempElement = document.querySelector("#current-temp");
-  tempElement.innerHTML = `${Math.round(response.data.main.temp)}`;
-  let weather = document.querySelector(`#weather-description`);
-  weather.innerHTML = `${response.data.weather[0].description}`;
-  let humidity = document.querySelector(`#humidity`);
-  humidity.innerHTML = `${response.data.main.humidity}`;
-  let windSpeed = document.querySelector(`#wind-speed`);
-  windSpeed.innerHTML = `${Math.round(response.data.wind.speed)}`;
-}
-function currentLocationTemp(position) {
-  let lat = position.coords.latitude;
-  let lon = position.coords.longitude;
-  let apiKey = "c589a18f7766266be7befa0ab3876d77";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=imperial`;
-  axios.get(`${apiUrl}`).then(showTemperature);
-}
-function getCurrentLocation() {
-  navigator.geolocation.getCurrentPosition(currentLocationTemp);
-}
-function cityTemperature(response) {
-  console.log(response);
-  let tempElement = document.querySelector("#current-temp");
-  tempElement.innerHTML = `${Math.round(response.data.main.temp)}°F`;
-  let weather = document.querySelector(`#weather-description`);
-  weather.innerHTML = `${response.data.weather[0].description}`;
-  let humidity = document.querySelector(`#humidity`);
-  humidity.innerHTML = `${response.data.main.humidity}`;
-  let windSpeed = document.querySelector(`#wind-speed`);
-  windSpeed.innerHTML = `${Math.round(response.data.wind.speed)}`;
-}
-function getCity(event) {
-  event.preventDefault();
-  let city = document.querySelector("#city");
-  let h1 = document.querySelector("h1");
-  h1.innerHTML = `${city.value}`;
-  let apiKey = "c589a18f7766266be7befa0ab3876d77";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city.value}&appid=${apiKey}&units=imperial`;
-  axios.get(`${apiUrl}`).then(cityTemperature);
-}
-function currentDay() {
-  let date = new Date();
+function formatDate(timestamp) {
+  let date = new Date(timestamp);
+  let hours = date.getHours();
+  if (hours < 10) {
+    hours = `0${hours}`;
+  }
+  let minutes = date.getMinutes();
+  if (minutes < 10) {
+    minutes = `0${minutes}`;
+  }
   let days = [
     "Sunday",
     "Monday",
@@ -66,23 +17,49 @@ function currentDay() {
     "Friday",
     "Saturday",
   ];
-  let today = document.querySelector("#current-day");
-  today.innerHTML = `${days[date.getDay()].charAt(0).toUpperCase()}${days[
-    date.getDay()
-  ].slice(1)} `;
-  let time = document.querySelector("#current-time");
-  let hours = date.getHours();
-  if (hours < 10) {
-    hours = `0${hours}`;
-  }
-  let minutes = date.getMinutes();
-  if (minutes < 10) {
-    minutes = `0${minutes}`;
-  }
-  time.innerHTML = `${hours}:${minutes}`;
+  let day = days[date.getDay()];
+  return `${day} ${hours}:${minutes}`;
+}
+function showTemperature(response) {
+  let city = document.querySelector("h1");
+  let tempElement = document.querySelector("#current-temp");
+  let weather = document.querySelector(`#weather-description`);
+  let humidity = document.querySelector(`#humidity`);
+  let windSpeed = document.querySelector(`#wind-speed`);
+  let dateElement = document.querySelector(`#current-date`);
+  city.innerHTML = response.data.city;
+  tempElement.innerHTML = Math.round(response.data.temperature.current);
+  weather.innerHTML = response.data.condition.description;
+  humidity.innerHTML = response.data.temperature.humidity;
+  windSpeed.innerHTML = Math.round(response.data.wind.speed);
+  dateElement.innerHTML = formatDate(response.data.time * 1000);
+}
+function defaultLocation() {
+  let city = "Hartford";
+  let apiKey = "o8f33adb6e5ada04681tfeaf708b3b4b";
+  let apiUrl = ` https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=imperial`;
+  axios.get(`${apiUrl}`).then(showTemperature);
+}
+function currentLocationTemp(position) {
+  let lat = position.coords.latitude;
+  let lon = position.coords.longitude;
+  let apiKey = "o8f33adb6e5ada04681tfeaf708b3b4b";
+  let apiUrl = `https://api.shecodes.io/weather/v1/current?lon=${lon}&lat=${lat}&key=${apiKey}&units=imperial`;
+  axios.get(`${apiUrl}`).then(showTemperature);
+}
+function getCurrentLocation() {
+  navigator.geolocation.getCurrentPosition(currentLocationTemp);
+}
+function getCity(event) {
+  event.preventDefault();
+  let city = document.querySelector("#city");
+  let h1 = document.querySelector("h1");
+  h1.innerHTML = `${city.value}`;
+  let apiKey = "o8f33adb6e5ada04681tfeaf708b3b4b";
+  let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city.value}&key=${apiKey}&units=imperial`;
+  axios.get(`${apiUrl}`).then(showTemperature);
 }
 
-currentDay();
 getCurrentLocation();
 defaultLocation();
 

@@ -50,14 +50,16 @@
           <div class="row">
             <div class="col">
               <h1 id="default-city">Hartford</h1>
-              <h4 id="current-day"></h4>
-              <h4 id="current-time"></h4>
+              <span>Last Updated: <br /><span id="current-date"></span></span>
             </div>
             <div class="row">
               <div class="col-sm-7 float-left">
-                <span class="float-left main-image">☁️</span>
+                <span class="float-left" id="main-image">☁️</span>
                 <h2 id="current-temp" class="float-left"></h2>
-                <span> °F | °C</span>
+                <span class="degrees"
+                  ><a href="#" id="fahrenheit">°F</a> |
+                  <a href="#" id="celsius">°C</a></span
+                >
               </div>
               <div class="col-sm-5">
                 <ul>
@@ -82,18 +84,23 @@
         </div>
       </div>
     </div>
-
+    <br />
     <footer>
-      <a href="https://github.com/marandarosa/weather-app" target="_blank"
+      <a
+        href="https://github.com/marandarosa/weather-app"
+        target="_blank"
+        class="footer"
         >Open-source code</a
       >, by
       <a
         href="https://www.linkedin.com/in/maranda-valentin-bb9a3b95/"
         target="_blank"
+        class="footer"
         >Maranda Valentin</a
       >
       💞
     </footer>
+
     <script src="app.js"></script>
   </body>
 </html>
