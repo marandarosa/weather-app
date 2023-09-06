@@ -27,18 +27,15 @@ function showTemperature(response) {
   let humidity = document.querySelector(`#humidity`);
   let windSpeed = document.querySelector(`#wind-speed`);
   let dateElement = document.querySelector(`#current-date`);
+  let icon = document.querySelector(`#weather-icon`);
   city.innerHTML = response.data.city;
   tempElement.innerHTML = Math.round(response.data.temperature.current);
   weather.innerHTML = response.data.condition.description;
   humidity.innerHTML = response.data.temperature.humidity;
   windSpeed.innerHTML = Math.round(response.data.wind.speed);
   dateElement.innerHTML = formatDate(response.data.time * 1000);
-}
-function defaultLocation() {
-  let city = "Hartford";
-  let apiKey = "o8f33adb6e5ada04681tfeaf708b3b4b";
-  let apiUrl = ` https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=imperial`;
-  axios.get(`${apiUrl}`).then(showTemperature);
+  icon.setAttribute("src", response.data.condition.icon_url);
+  icon.setAttribute("alt", response.data.condition.description);
 }
 function currentLocationTemp(position) {
   let lat = position.coords.latitude;
@@ -50,6 +47,12 @@ function currentLocationTemp(position) {
 function getCurrentLocation() {
   navigator.geolocation.getCurrentPosition(currentLocationTemp);
 }
+function defaultLocation() {
+  let city = "Hartford";
+  let apiKey = "o8f33adb6e5ada04681tfeaf708b3b4b";
+  let apiUrl = ` https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=imperial`;
+  axios.get(`${apiUrl}`).then(showTemperature);
+}
 function getCity(event) {
   event.preventDefault();
   let city = document.querySelector("#city");
@@ -60,7 +63,6 @@ function getCity(event) {
   axios.get(`${apiUrl}`).then(showTemperature);
 }
 
-getCurrentLocation();
 defaultLocation();
 
 let clickSearchButton = document.querySelector("#city-search");
