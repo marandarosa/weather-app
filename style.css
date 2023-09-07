@@ -1,5 +1,5 @@
 body {
-  background-image: url("https://s3.amazonaws.com/shecodesio-production/uploads/files/000/095/944/original/5200111-cloud-cloudscape-sky-puffy-white-pink-pastel-horizon-faded-nature-wallpaper-light-from-above-aerial-view-aerial-love-background-love-wallpaper-love-oregon-summer-png-images.jpg?1693952064");
+  background-image: url("https://s3.amazonaws.com/shecodesio-production/uploads/files/000/096/145/original/1224-sky-clouds-blue-faded-4k.jpg?1694119458");
   background-size: cover;
 }
 .search-city {
@@ -7,7 +7,7 @@ body {
 }
 .search-button,
 .current-location {
-  border: 2px solid #000000;
+  border: 1.5px solid #17afbb;
   border-radius: 15px;
   padding: 5px 10px;
   background-color: white;
@@ -18,7 +18,7 @@ div.card {
   max-width: 450px;
   position: relative;
   top: 30px;
-  background-color: #ffded5;
+  background-color: #e9f8ff;
   box-shadow: 0px 0px 6px 1px rgba(0, 0, 0, 0.3) inset;
 }
 .card-body {
@@ -74,7 +74,7 @@ p {
   padding: 0px 25px;
 }
 .five-day-individual {
-  border: 1px solid gray;
+  border: 1.5px solid #17afbb;
   border-radius: 15px;
   margin: 15px 5px;
 }
