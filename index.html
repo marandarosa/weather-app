@@ -20,12 +20,13 @@
       <div class="card">
         <div class="row search-city">
           <div class="col-6">
-            <form>
+            <form id="search-form">
               <input
-                type="text"
+                type="search"
                 id="city"
                 class="form-control"
                 placeholder="Enter city"
+                autocomplete="off"
               />
             </form>
           </div>
@@ -57,8 +58,8 @@
                 <img src="#" class="float-left" id="weather-icon" alt="#" />
                 <h2 id="current-temp" class="float-left"></h2>
                 <span class="degrees"
-                  ><a href="#" id="fahrenheit">°F</a> |
-                  <a href="#" id="celsius">°C</a></span
+                  ><a href="#" id="fahrenheit-link">°F</a> |
+                  <a href="#" id="celsius-link">°C</a></span
                 >
               </div>
               <div class="col-sm-5">

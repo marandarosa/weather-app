@@ -28,6 +28,7 @@ function showTemperature(response) {
   let windSpeed = document.querySelector(`#wind-speed`);
   let dateElement = document.querySelector(`#current-date`);
   let icon = document.querySelector(`#weather-icon`);
+  fahrenheitTemperature = response.data.temperature.current;
   city.innerHTML = response.data.city;
   tempElement.innerHTML = Math.round(response.data.temperature.current);
   weather.innerHTML = response.data.condition.description;
@@ -62,11 +63,33 @@ function getCity(event) {
   let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city.value}&key=${apiKey}&units=imperial`;
   axios.get(`${apiUrl}`).then(showTemperature);
 }
+function showCelsiusTemp(event) {
+  event.preventDefault();
+  let celsiusValue = Math.round(((fahrenheitTemperature - 32) * 5) / 9);
+  let temperatureElement = document.querySelector("#current-temp");
+  temperatureElement.innerHTML = celsiusValue;
+}
+
+function showFahrenheitTemp(event) {
+  event.preventDefault();
+  let temperatureElement = document.querySelector("#current-temp");
+  temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
+}
 
 defaultLocation();
+let citySearch = document.querySelector("#search-form");
+citySearch.addEventListener("submit", getCity);
 
 let clickSearchButton = document.querySelector("#city-search");
 clickSearchButton.addEventListener("click", getCity);
 
 let button = document.querySelector(".current-location");
 button.addEventListener("click", getCurrentLocation);
+
+let celsiusLink = document.querySelector("#celsius-link");
+celsiusLink.addEventListener("click", showCelsiusTemp);
+
+let fahrenheitLink = document.querySelector("#fahrenheit-link");
+fahrenheitLink.addEventListener("click", showFahrenheitTemp);
+
+let fahrenheitTemperature = null;
