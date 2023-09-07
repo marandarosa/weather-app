@@ -90,3 +90,11 @@ footer {
 .footer:hover {
   color: #ffded5;
 }
+.active {
+  color: black;
+  text-decoration: none;
+  cursor: default;
+}
+.active:hover {
+  text-decoration: none;
+}
