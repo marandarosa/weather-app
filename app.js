@@ -50,20 +50,18 @@ function currentLocationTemp(position) {
 function getCurrentLocation() {
   navigator.geolocation.getCurrentPosition(currentLocationTemp);
 }
-function defaultLocation() {
-  let city = "Hartford";
-  let apiKey = "o8f33adb6e5ada04681tfeaf708b3b4b";
-  let apiUrl = ` https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=imperial`;
-  axios.get(`${apiUrl}`).then(showTemperature);
-}
 function getCity(event) {
   event.preventDefault();
   let city = document.querySelector("#city");
-  let h1 = document.querySelector("h1");
-  h1.innerHTML = `${city.value}`;
-  let apiKey = "o8f33adb6e5ada04681tfeaf708b3b4b";
-  let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city.value}&key=${apiKey}&units=imperial`;
-  axios.get(`${apiUrl}`).then(showTemperature);
+  if (city.value === "") {
+    alert("Oops, input required. Please enter city again.");
+  } else {
+    let h1 = document.querySelector("h1");
+    h1.innerHTML = `${city.value}`;
+    let apiKey = "o8f33adb6e5ada04681tfeaf708b3b4b";
+    let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city.value}&key=${apiKey}&units=imperial`;
+    axios.get(`${apiUrl}`).then(showTemperature);
+  }
 }
 function showCelsiusTemp(event) {
   event.preventDefault();
@@ -81,15 +79,21 @@ function showFahrenheitTemp(event) {
   temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
 }
 
-defaultLocation();
+let city = "Hartford";
+let apiKey = "o8f33adb6e5ada04681tfeaf708b3b4b";
+let apiUrl = ` https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=imperial`;
+axios.get(`${apiUrl}`).then(showTemperature);
+
+navigator.geolocation.getCurrentPosition(currentLocationTemp);
+
 let citySearch = document.querySelector("#search-form");
 citySearch.addEventListener("submit", getCity);
 
 let clickSearchButton = document.querySelector("#city-search");
 clickSearchButton.addEventListener("click", getCity);
 
-let button = document.querySelector(".current-location");
-button.addEventListener("click", getCurrentLocation);
+let locationButton = document.querySelector(".current-location");
+locationButton.addEventListener("click", getCurrentLocation);
 
 let celsiusLink = document.querySelector("#celsius-link");
 celsiusLink.addEventListener("click", showCelsiusTemp);

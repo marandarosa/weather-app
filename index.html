@@ -19,7 +19,7 @@
     <div class="container">
       <div class="card">
         <div class="row search-city">
-          <div class="col-6">
+          <div class="col-8">
             <form id="search-form">
               <input
                 type="search"
@@ -40,9 +40,11 @@
               />
             </form>
           </div>
-          <div class="col-4">
+          <div class="col-2">
             <form>
-              <button class="current-location">Current Location</button>
+              <button class="current-location">
+                <i class="fa-solid fa-location-dot" alt="Current Location"></i>
+              </button>
             </form>
           </div>
         </div>
@@ -70,6 +72,27 @@
                 </ul>
               </div>
             </div>
+            <hr />
+            <div class="container text-center forecast">
+              <p class="next-five">Next 5 days:</p>
+              <div class="row">
+                <div class="col forecast-individual">
+                  Tue <br />🌥️ <br />79°F
+                </div>
+                <div class="col forecast-individual">
+                  Wed <br />🌥️ <br />79°F
+                </div>
+                <div class="col forecast-individual">
+                  Thu <br />⛅ <br />81°F
+                </div>
+                <div class="col forecast-individual">
+                  Fri <br />🌧️ <br />77°F
+                </div>
+                <div class="col forecast-individual">
+                  Sat <br />⛅ <br />81°F
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -92,5 +115,9 @@
     </footer>
 
     <script src="app.js"></script>
+    <script
+      src="https://kit.fontawesome.com/668b7b8ba7.js"
+      crossorigin="anonymous"
+    ></script>
   </body>
 </html>
