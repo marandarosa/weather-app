@@ -84,8 +84,6 @@ let apiKey = "o8f33adb6e5ada04681tfeaf708b3b4b";
 let apiUrl = ` https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=imperial`;
 axios.get(`${apiUrl}`).then(showTemperature);
 
-navigator.geolocation.getCurrentPosition(currentLocationTemp);
-
 let citySearch = document.querySelector("#search-form");
 citySearch.addEventListener("submit", getCity);
 

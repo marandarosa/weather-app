@@ -9,13 +9,13 @@ body {
 .current-location {
   border: 1.5px solid #17afbb;
   border-radius: 15px;
-  padding: 5px 10px;
+  padding: 7px 20px;
   background-color: white;
   font-size: small;
 }
 div.card {
   margin: 0 auto;
-  max-width: 450px;
+  max-width: 500px;
   position: relative;
   top: 30px;
   background-color: #e9f8ff;
@@ -70,26 +70,17 @@ p {
   text-align: left;
   margin: 0;
 }
-.forecast {
-  font-size: 16px;
-  padding: 0px 25px;
-}
-.forecast-individual {
-  border: 1.5px solid #17afbb;
-  border-radius: 15px;
-  margin: 15px 5px;
-}
 footer {
   font-size: 14px;
-  position: relative;
-  top: 10px;
   text-align: center;
+  position: relative;
+  top: 20px;
 }
 .footer {
-  color: white;
+  color: black;
 }
 .footer:hover {
-  color: #ffded5;
+  color: white;
 }
 .active {
   color: black;
@@ -98,4 +89,15 @@ footer {
 }
 .active:hover {
   text-decoration: none;
+}
+.five-day-forecast {
+  margin-bottom: 15px;
+}
+.forecast-individual {
+  border: 1.5px solid #17afbb;
+  border-radius: 15px;
+  margin: 10px;
+}
+.temp-max {
+  font-weight: bold;
 }

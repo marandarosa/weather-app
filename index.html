@@ -42,7 +42,7 @@
           </div>
           <div class="col-2">
             <form>
-              <button class="current-location">
+              <button type="button" class="current-location">
                 <i class="fa-solid fa-location-dot" alt="Current Location"></i>
               </button>
             </form>
@@ -74,22 +74,17 @@
             </div>
             <hr />
             <div class="container text-center forecast">
-              <p class="next-five">Next 5 days:</p>
+              <p class="five-day-forecast">5-Day Forecast:</p>
               <div class="row">
-                <div class="col forecast-individual">
-                  Tue <br />🌥️ <br />79°F
-                </div>
-                <div class="col forecast-individual">
-                  Wed <br />🌥️ <br />79°F
-                </div>
-                <div class="col forecast-individual">
-                  Thu <br />⛅ <br />81°F
-                </div>
-                <div class="col forecast-individual">
-                  Fri <br />🌧️ <br />77°F
-                </div>
-                <div class="col forecast-individual">
-                  Sat <br />⛅ <br />81°F
+                <div class="col-2 forecast-individual">
+                  <div class="forecast-day">Tue</div>
+                  <img
+                    src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/few-clouds-day.png"
+                    style="width: 42px; height: 42px"
+                    class="forecast-temps"
+                  />
+                  <span class="temp-max">79°</span>
+                  <span class="temp-min">65°</span>
                 </div>
               </div>
             </div>
