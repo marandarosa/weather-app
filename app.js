@@ -28,6 +28,7 @@ function showTemperature(response) {
   let windSpeed = document.querySelector(`#wind-speed`);
   let dateElement = document.querySelector(`#current-date`);
   let icon = document.querySelector(`#weather-icon`);
+
   fahrenheitTemperature = response.data.temperature.current;
   celsiusLink.classList.remove("active");
   fahrenheitLink.classList.add("active");
@@ -39,6 +40,8 @@ function showTemperature(response) {
   dateElement.innerHTML = formatDate(response.data.time * 1000);
   icon.setAttribute("src", response.data.condition.icon_url);
   icon.setAttribute("alt", response.data.condition.description);
+
+  displayForecast();
 }
 function currentLocationTemp(position) {
   let lat = position.coords.latitude;
@@ -77,6 +80,29 @@ function showFahrenheitTemp(event) {
   fahrenheitLink.classList.add("active");
   let temperatureElement = document.querySelector("#current-temp");
   temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
+}
+function displayForecast() {
+  let forecast = document.querySelector("#weather-forecast");
+  let days = ["Wed", "Thu", "Fri", "Sat", "Sun"];
+  let forecastHTML = `<div class="row">`;
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `
+  <div class="col-2 forecast-individual" id="weather-forecast">
+  <div class="forecast-day">${day}</div>
+  <img
+  src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/few-clouds-day.png"
+  style="width: 42px; height: 42px"
+  class="forecast-temps"
+  />
+  <span class="temp-max">79°</span>
+  <span class="temp-min">65°</span>
+  </div>`;
+  });
+
+  forecastHTML = forecastHTML + `</div>`;
+  forecast.innerHTML = forecastHTML;
 }
 
 let city = "Hartford";
