@@ -41,7 +41,7 @@ function showTemperature(response) {
   icon.setAttribute("src", response.data.condition.icon_url);
   icon.setAttribute("alt", response.data.condition.description);
 
-  displayForecast();
+  getForecast(response.data.coordinates);
 }
 function currentLocationTemp(position) {
   let lat = position.coords.latitude;
@@ -81,7 +81,7 @@ function showFahrenheitTemp(event) {
   let temperatureElement = document.querySelector("#current-temp");
   temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
 }
-function displayForecast() {
+function displayForecast(response) {
   let forecast = document.querySelector("#weather-forecast");
   let days = ["Wed", "Thu", "Fri", "Sat", "Sun"];
   let forecastHTML = `<div class="row">`;
@@ -103,6 +103,11 @@ function displayForecast() {
 
   forecastHTML = forecastHTML + `</div>`;
   forecast.innerHTML = forecastHTML;
+}
+function getForecast(coordinates) {
+  let apiKey = "o8f33adb6e5ada04681tfeaf708b3b4b";
+  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?lat=${coordinates.latitude}&lon=${coordinates.longitude}&key=${apiKey}`;
+  axios.get(`${apiUrl}`).then(displayForecast);
 }
 
 let city = "Hartford";
