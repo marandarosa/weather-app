@@ -49,13 +49,6 @@ h2 {
   bottom: 20px;
   font-size: 20px;
 }
-ul {
-  list-style-type: none;
-  padding: 0px;
-  position: relative;
-  top: 20px;
-  margin-bottom: 35px;
-}
 #weather-icon {
   font-size: 65px;
   display: inline;
@@ -64,12 +57,30 @@ ul {
 #weather-description {
   text-transform: capitalize;
 }
+ul {
+  list-style-type: none;
+  padding: 0px;
+  position: relative;
+  top: 20px;
+  margin-bottom: 35px;
+}
 p {
   font-style: italic;
   font-size: 16px;
   line-height: 1em;
   text-align: left;
   margin: 0;
+}
+.five-day-forecast {
+  margin-bottom: 10px;
+}
+.forecast-individual {
+  border: 1.5px solid #17afbb;
+  border-radius: 15px;
+  margin: 8px;
+}
+.temp-max {
+  font-weight: bold;
 }
 footer {
   font-size: 14px;
@@ -82,23 +93,4 @@ footer {
 }
 .footer:hover {
   color: white;
-}
-.active {
-  color: black;
-  text-decoration: none;
-  cursor: default;
-}
-.active:hover {
-  text-decoration: none;
-}
-.five-day-forecast {
-  margin-bottom: 15px;
-}
-.forecast-individual {
-  border: 1.5px solid #17afbb;
-  border-radius: 15px;
-  margin: 8px;
-}
-.temp-max {
-  font-weight: bold;
 }

@@ -29,7 +29,7 @@ function formatDays(timestamp) {
 function showTemperature(response) {
   let city = document.querySelector("h1");
   let tempElement = document.querySelector("#current-temp");
-  let weather = document.querySelector(`#weather-description`);
+  let weatherElement = document.querySelector(`#weather-description`);
   let humidity = document.querySelector(`#humidity`);
   let windSpeed = document.querySelector(`#wind-speed`);
   let dateElement = document.querySelector(`#current-date`);
@@ -38,7 +38,7 @@ function showTemperature(response) {
   fahrenheitTemperature = response.data.temperature.current;
   city.innerHTML = response.data.city;
   tempElement.innerHTML = Math.round(response.data.temperature.current);
-  weather.innerHTML = response.data.condition.description;
+  weatherElement.innerHTML = response.data.condition.description;
   humidity.innerHTML = response.data.temperature.humidity;
   windSpeed.innerHTML = Math.round(response.data.wind.speed);
   dateElement.innerHTML = formatDate(response.data.time * 1000);
