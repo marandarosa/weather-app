@@ -20,6 +20,27 @@ function formatDate(timestamp) {
   let day = days[date.getDay()];
   return `${day} ${hours}:${minutes}`;
 }
+function formatDays(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  let day = days[date.getDay()];
+  return `${day}`;
+}
+function showCelsiusTemp(event) {
+  event.preventDefault();
+  let temperatureElement = document.querySelector("#current-temp");
+  fahrenheitLink.classList.remove("active");
+  celsiusLink.classList.add("active");
+  let celsiusValue = Math.round(((fahrenheitTemperature - 32) * 5) / 9);
+  temperatureElement.innerHTML = celsiusValue;
+}
+function showFahrenheitTemp(event) {
+  event.preventDefault();
+  celsiusLink.classList.remove("active");
+  fahrenheitLink.classList.add("active");
+  let temperatureElement = document.querySelector("#current-temp");
+  temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
+}
 function showTemperature(response) {
   let city = document.querySelector("h1");
   let tempElement = document.querySelector("#current-temp");
@@ -66,39 +87,27 @@ function getCity(event) {
     axios.get(`${apiUrl}`).then(showTemperature);
   }
 }
-function showCelsiusTemp(event) {
-  event.preventDefault();
-  let temperatureElement = document.querySelector("#current-temp");
-  fahrenheitLink.classList.remove("active");
-  celsiusLink.classList.add("active");
-  let celsiusValue = Math.round(((fahrenheitTemperature - 32) * 5) / 9);
-  temperatureElement.innerHTML = celsiusValue;
-}
-function showFahrenheitTemp(event) {
-  event.preventDefault();
-  celsiusLink.classList.remove("active");
-  fahrenheitLink.classList.add("active");
-  let temperatureElement = document.querySelector("#current-temp");
-  temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
-}
 function displayForecast(response) {
+  console.log(response.data);
   let forecast = document.querySelector("#weather-forecast");
-  let days = ["Wed", "Thu", "Fri", "Sat", "Sun"];
+  let forecastArray = response.data.daily;
   let forecastHTML = `<div class="row">`;
-  days.forEach(function (day) {
-    forecastHTML =
-      forecastHTML +
-      `
+  forecastArray.forEach(function (forecastDay, index) {
+    if (index < 5) {
+      forecastHTML =
+        forecastHTML +
+        `
   <div class="col-2 forecast-individual" id="weather-forecast">
-  <div class="forecast-day">${day}</div>
+  <div class="forecast-day">${formatDays(forecastDay.time)}</div>
   <img
-  src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/few-clouds-day.png"
+  src="${forecastDay.condition.icon_url}"
   style="width: 42px; height: 42px"
   class="forecast-temps"
   />
-  <span class="temp-max">79°</span>
-  <span class="temp-min">65°</span>
+  <span class="temp-max">${Math.round(forecastDay.temperature.maximum)}°</span>
+  <span class="temp-min">${Math.round(forecastDay.temperature.minimum)}°</span>
   </div>`;
+    }
   });
 
   forecastHTML = forecastHTML + `</div>`;
@@ -106,7 +115,7 @@ function displayForecast(response) {
 }
 function getForecast(coordinates) {
   let apiKey = "o8f33adb6e5ada04681tfeaf708b3b4b";
-  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?lat=${coordinates.latitude}&lon=${coordinates.longitude}&key=${apiKey}`;
+  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?lat=${coordinates.latitude}&lon=${coordinates.longitude}&key=${apiKey}&units=imperial`;
   axios.get(`${apiUrl}`).then(displayForecast);
 }
 
