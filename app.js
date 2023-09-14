@@ -26,21 +26,6 @@ function formatDays(timestamp) {
   let day = days[date.getDay()];
   return `${day}`;
 }
-function showCelsiusTemp(event) {
-  event.preventDefault();
-  let temperatureElement = document.querySelector("#current-temp");
-  fahrenheitLink.classList.remove("active");
-  celsiusLink.classList.add("active");
-  let celsiusValue = Math.round(((fahrenheitTemperature - 32) * 5) / 9);
-  temperatureElement.innerHTML = celsiusValue;
-}
-function showFahrenheitTemp(event) {
-  event.preventDefault();
-  celsiusLink.classList.remove("active");
-  fahrenheitLink.classList.add("active");
-  let temperatureElement = document.querySelector("#current-temp");
-  temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
-}
 function showTemperature(response) {
   let city = document.querySelector("h1");
   let tempElement = document.querySelector("#current-temp");
@@ -51,8 +36,6 @@ function showTemperature(response) {
   let icon = document.querySelector(`#weather-icon`);
 
   fahrenheitTemperature = response.data.temperature.current;
-  celsiusLink.classList.remove("active");
-  fahrenheitLink.classList.add("active");
   city.innerHTML = response.data.city;
   tempElement.innerHTML = Math.round(response.data.temperature.current);
   weather.innerHTML = response.data.condition.description;
@@ -88,7 +71,6 @@ function getCity(event) {
   }
 }
 function displayForecast(response) {
-  console.log(response.data);
   let forecast = document.querySelector("#weather-forecast");
   let forecastArray = response.data.daily;
   let forecastHTML = `<div class="row">`;
@@ -132,11 +114,5 @@ clickSearchButton.addEventListener("click", getCity);
 
 let locationButton = document.querySelector(".current-location");
 locationButton.addEventListener("click", getCurrentLocation);
-
-let celsiusLink = document.querySelector("#celsius-link");
-celsiusLink.addEventListener("click", showCelsiusTemp);
-
-let fahrenheitLink = document.querySelector("#fahrenheit-link");
-fahrenheitLink.addEventListener("click", showFahrenheitTemp);
 
 let fahrenheitTemperature = null;

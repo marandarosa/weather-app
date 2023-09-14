@@ -46,7 +46,8 @@ h2 {
 }
 .degrees {
   position: relative;
-  bottom: 20px;
+  bottom: 15px;
+  font-size: 20px;
 }
 ul {
   list-style-type: none;
